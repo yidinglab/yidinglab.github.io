@@ -115,10 +115,11 @@
         <span class="c1"># This bad boy violates so many OO practices. Everything for ease</span>
         <span class="c1">#   of use, I guess.</span>
 
-        <span class="k">def</span> <span class="nf">wrap_function</span><span class="p">(</span><span class="n">custom_evaluate</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">wrap_function</span><span class="p">(</span><span class="n">custom_evaluate</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+                                                    <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
             <span class="nd">@wraps</span><span class="p">(</span><span class="n">custom_evaluate</span><span class="p">)</span>
             <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">Evaluator</span><span class="p">,</span> <span class="n">individual</span><span class="p">:</span> <span class="n">Individual</span><span class="p">,</span>
-                        <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+                        <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">individual</span><span class="p">,</span> <span class="n">Individual</span><span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The input is not an individual&quot;</span><span class="p">)</span>
                 <span class="c1"># If :attr:`retain_fitness` and the individual is scored, then</span>
@@ -168,7 +169,7 @@
 <div class="viewcode-block" id="Evaluator.evaluate">
 <a class="viewcode-back" href="../../../evokit.core.html#evokit.core.evaluator.Evaluator.evaluate">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span> <span class="n">individual</span><span class="p">:</span> <span class="n">D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span> <span class="n">individual</span><span class="p">:</span> <span class="n">D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluation strategy. Return the fitness of an individual.</span>
 
 <span class="sd">        Subclasses should override this method.</span>
@@ -215,8 +216,8 @@
 <div class="viewcode-block" id="NullEvaluator.evaluate">
 <a class="viewcode-back" href="../../../evokit.core.html#evokit.core.evaluator.NullEvaluator.evaluate">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span></div>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span></div>
 </div>
 
 </pre></div>

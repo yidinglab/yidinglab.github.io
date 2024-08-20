@@ -95,8 +95,8 @@
 <p>When extending a framework, you can just define what matters. The framework takes care of the rest.</p>
 <p>Define the OneMax evaluator in 3 lines!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CountBits</span><span class="p">(</span><span class="n">Evaluator</span><span class="p">[</span><span class="n">BinaryString</span><span class="p">]):</span>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s1</span><span class="p">:</span> <span class="n">BinaryString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">s1</span><span class="o">.</span><span class="n">genome</span><span class="o">.</span><span class="n">bit_count</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s1</span><span class="p">:</span> <span class="n">BinaryString</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">genome</span><span class="o">.</span><span class="n">bit_count</span><span class="p">(),)</span>
 </pre></div>
 </div>
 </section>

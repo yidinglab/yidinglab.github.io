@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#advanced-tutorials">Advanced Tutorials</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="accountant.html">Collect Runtime Statistics with <code class="docutils literal notranslate"><span class="pre">Accountant</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm.html">Creating a Custom <code class="docutils literal notranslate"><span class="pre">Controller</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="gp.html">Symbolic Regression with Genetic Programming</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Modifying Operators with the Interceptor Pattern</a></li>
 <li class="toctree-l3"><a class="reference internal" href="onemax.html">Getting Started with OneMax</a></li>
@@ -101,18 +102,6 @@
              
   <section id="Modifying-Operators-with-the-Interceptor-Pattern">
 <h1>Modifying Operators with the Interceptor Pattern<a class="headerlink" href="#Modifying-Operators-with-the-Interceptor-Pattern" title="Link to this heading"></a></h1>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">nb_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">))</span>
-<span class="k">if</span> <span class="n">nb_dir</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nb_dir</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 <p>The interceptor design pattern does what?</p>
 <p>In this framework, an interceptor adds to the behaviour of an operator. This example implements an interceptor that changes any selector to an elitist selector.</p>
 <p>To begin, consider a simple example. Declare a class NumberBox with attribute <code class="docutils literal notranslate"><span class="pre">.value</span></code> and method <code class="docutils literal notranslate"><span class="pre">.increment</span></code>. For now, calling <code class="docutils literal notranslate"><span class="pre">.increment</span></code> increments <code class="docutils literal notranslate"><span class="pre">.value</span></code> by 1.</p>

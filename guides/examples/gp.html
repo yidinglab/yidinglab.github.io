@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Modifying Operators with the Interceptor Pattern" href="interceptor.html" />
-    <link rel="prev" title="Collect Runtime Statistics with Accountant" href="accountant.html" /> 
+    <link rel="prev" title="Creating a Custom Controller" href="algorithm.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#advanced-tutorials">Advanced Tutorials</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="accountant.html">Collect Runtime Statistics with <code class="docutils literal notranslate"><span class="pre">Accountant</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithm.html">Creating a Custom <code class="docutils literal notranslate"><span class="pre">Controller</span></code></a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Symbolic Regression with Genetic Programming</a></li>
 <li class="toctree-l3"><a class="reference internal" href="interceptor.html">Modifying Operators with the Interceptor Pattern</a></li>
 <li class="toctree-l3"><a class="reference internal" href="onemax.html">Getting Started with OneMax</a></li>
@@ -101,18 +102,6 @@
              
   <section id="Symbolic-Regression-with-Genetic-Programming">
 <h1>Symbolic Regression with Genetic Programming<a class="headerlink" href="#Symbolic-Regression-with-Genetic-Programming" title="Link to this heading"></a></h1>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">nb_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">))</span>
-<span class="k">if</span> <span class="n">nb_dir</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nb_dir</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 <p>Import algorithms and selectors from modules in <code class="docutils literal notranslate"><span class="pre">core</span></code>; import representation-related operators from the appropriate module in <code class="docutils literal notranslate"><span class="pre">evolvables</span></code> (in this case, <code class="docutils literal notranslate"><span class="pre">evolvables.gp</span></code> for tree-based genetic programming).</p>
 <p>The following modules are imported:</p>
 <ul class="simple">
@@ -370,7 +359,7 @@ Best individual is: Program:add(add(sin(x0), mul(cos(x0), 1)), cos(x0)), with fi
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/guides_examples_gp_19_0.svg" src="../../_images/guides_examples_gp_19_0.svg" /></div>
+<img alt="../../_images/guides_examples_gp_18_0.svg" src="../../_images/guides_examples_gp_18_0.svg" /></div>
 </div>
 <p>To visualise the learning process: note that earlier highest-fitness programs (whose plotted colours are lighter) do not approximate the objective function as closely as later ones.</p>
 <div class="nbinput docutils container">
@@ -417,7 +406,7 @@ Best individual is: Program:add(add(sin(x0), mul(cos(x0), 1)), cos(x0)), with fi
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/guides_examples_gp_21_0.png" src="../../_images/guides_examples_gp_21_0.png" />
+<img alt="../../_images/guides_examples_gp_20_0.png" src="../../_images/guides_examples_gp_20_0.png" />
 </div>
 </div>
 <p>The following plot illustrates the learning curve.</p>
@@ -437,7 +426,7 @@ Best individual is: Program:add(add(sin(x0), mul(cos(x0), 1)), cos(x0)), with fi
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/guides_examples_gp_23_0.png" src="../../_images/guides_examples_gp_23_0.png" />
+<img alt="../../_images/guides_examples_gp_22_0.png" src="../../_images/guides_examples_gp_22_0.png" />
 </div>
 </div>
 </section>
@@ -446,7 +435,7 @@ Best individual is: Program:add(add(sin(x0), mul(cos(x0), 1)), cos(x0)), with fi
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="accountant.html" class="btn btn-neutral float-left" title="Collect Runtime Statistics with Accountant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="algorithm.html" class="btn btn-neutral float-left" title="Creating a Custom Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="interceptor.html" class="btn btn-neutral float-right" title="Modifying Operators with the Interceptor Pattern" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

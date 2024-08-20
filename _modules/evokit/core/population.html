@@ -96,6 +96,8 @@
     <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
     <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
     <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+    <span class="kn">from</span> <span class="nn">_typeshed</span> <span class="kn">import</span> <span class="n">SupportsRichComparison</span>
+
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">overload</span>
@@ -170,14 +172,14 @@
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1">#: Fitness of the individual.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fitness</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fitness</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span>
 
         <span class="c1">#: Genotype of the individual.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">genome</span><span class="p">:</span> <span class="n">R</span></div>
 
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">fitness</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">fitness</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fitness of an individual.</span>
 
 <span class="sd">        Writing to this property changes the fitness of the individual.</span>
@@ -200,7 +202,7 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fitness</span>
 
     <span class="nd">@fitness</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">fitness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">fitness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sphinx does not pick up docstrings on setters.</span>
 
 <span class="sd">        This docstring should never be seen.</span>
@@ -422,8 +424,10 @@
 <div class="viewcode-block" id="Population.sort">
 <a class="viewcode-back" href="../../../evokit.core.html#evokit.core.population.Population.sort">[docs]</a>
     <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span>
-             <span class="n">ranker</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+             <span class="n">ranker</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="n">SupportsRichComparison</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fitness</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Rearrange items by fitness, highest-first.</span>
+
+<span class="sd">        If individuals have multiple fitnesses, sort lexi ... what?.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            ranker: Sort key, called on each item prior to sorting.</span>

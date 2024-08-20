@@ -51,10 +51,10 @@
 <li class="toctree-l1"><a class="reference internal" href="why.html">Why EvoKit?</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-from-source">Install from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-and-building">Installing and Building</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-a-source-distribution">Build a source distribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-a-built-distribution-wheel">Build a built distribution (wheel)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#build-documentation">Build Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trial-run">Trial Run</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="guides/index.html">Guides</a></li>
@@ -90,17 +90,20 @@
              
   <section id="installing">
 <h1>Installing<a class="headerlink" href="#installing" title="Link to this heading"></a></h1>
-<section id="install-from-source">
-<h2>Install from source<a class="headerlink" href="#install-from-source" title="Link to this heading"></a></h2>
-<p>Navigate to <code class="docutils literal notranslate"><span class="pre">evoframe</span></code>, then run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>.
+<p>This tutorial installs EvoKit with the <a class="reference external" href="https://docs.python.org/3/installing/"><code class="docutils literal notranslate"><span class="pre">pip</span></code></a> module. Please
+ensure that the module is available.</p>
+<p>If an error occurs during installation, update <code class="docutils literal notranslate"><span class="pre">pip</span></code> then try again.
+If you do not wish to install EvoKit globally, please consider using
+a virtual environment. An official tutorial can be found <a class="reference external" href="https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/">here</a>.</p>
+<p>The build script uses the <a class="reference external" href="https://pypi.org/project/build/"><code class="docutils literal notranslate"><span class="pre">build</span></code></a> module. Please install the module
+or update it by running the following script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">build</span> <span class="o">--</span><span class="n">upgrade</span>
 </pre></div>
 </div>
-</section>
-<section id="installing-and-building">
-<h2>Installing and Building<a class="headerlink" href="#installing-and-building" title="Link to this heading"></a></h2>
-<p>EvoKit is built with <a class="reference external" href="https://pypi.org/project/build/">build</a>. To ensure that <code class="docutils literal notranslate"><span class="pre">build</span></code> is up to date, run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">build</span> <span class="o">--</span><span class="n">upgrade</span>
+<section id="install-from-source">
+<h2>Install from source<a class="headerlink" href="#install-from-source" title="Link to this heading"></a></h2>
+<p>Navigate to <code class="docutils literal notranslate"><span class="pre">evoframe/</span></code>, then run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>.
 </pre></div>
 </div>
 </section>
@@ -126,6 +129,43 @@
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">update.bat</span></code> to update API references in <code class="docutils literal notranslate"><span class="pre">source/</span></code> then rebuild the documentation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">source/</span></code> contains all configuration files, including <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.</p></li>
 </ul>
+</section>
+<section id="trial-run">
+<h2>Trial Run<a class="headerlink" href="#trial-run" title="Link to this heading"></a></h2>
+<p>After installing the package, check if it is working by running</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>evokit.evolvables.binstring
+</pre></div>
+</div>
+<p>or, inside a Python program or an interactive Python terminal, run</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">evokit.evolvables.binstring</span> <span class="k">as</span> <span class="nn">binstring</span>
+<span class="n">binstring</span><span class="o">.</span><span class="n">trial_run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The output should be a string of tuples with non-decreasing (and hopefully
+increasing) values. A sample of the output follows.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If the values are non-decreasing, then the elitist selector
+has not failed to retain the best individual. Otherwise, the
+elitist selector is not behaving expected: either the package
+or the installation is erroneous.</p></li>
+<li><p>If the values are increasing, then the variator has successfully
+improved the population. If this does not happen, try rerunning the
+program a few times.</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">15</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">15</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">15</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">15</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,)</span>
+<span class="p">(</span><span class="mi">17</span><span class="p">,)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
